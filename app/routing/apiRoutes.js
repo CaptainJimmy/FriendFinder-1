@@ -10,17 +10,15 @@ router.use(function timeLog(req, res, next) {
 });
 
 router.post('/api/friends', function(req, res) {
-    var newSurvey = req.body;
-    console.log(newSurvey);
+    let newSurvey = req.body;
     let pickedFriend;
-    var friendCalc = [];
+    let friendCalc = [];
     for (var i = 0; i < friendsList.length; i++) {
         var totalDifference = 0;
         for (var k = 0; k < 10; k++) {
             let scoreDiff = Math.abs(friendsList[i].scores[k] - newSurvey.scores[k]);
             totalDifference += scoreDiff;
         }
-        console.log('Total Diff ' + i + ': ' + totalDifference);
         friendCalc.push({
             name: friendsList[i].name,
             picture: friendsList[i].picture,
